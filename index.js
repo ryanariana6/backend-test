@@ -9,10 +9,12 @@ app.use(
   })
 );
 app.get("/", (req, res) => {
+  res.set('Access-Control-Allow-Origin', '*');
   res.json({ message: "ok" });
 });
 
 app.use("/news", newsRouter);
+
 /* Error handler middleware */
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
